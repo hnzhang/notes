@@ -88,7 +88,31 @@ Inline Policy --> | user| <-- Role <-- Policy/Policies
 * Identity Provider (IdP), a trusted provider of your users identify that lets you use authenticatioe to access other services. They could be: Facebook, Amazon, Google, Twitter, Github, LinkedIn.
 
 ** Type of Identity Providers
-The tech that behind the Identity Providers. Most time it is Security Assertion Markup Language(SAML), or SSO(Single Sign ON), or OpenID Connection(OIDC) OAuth
+The tech that behind the Identity Providers. Most time it is Security Assertion Markup Language(SAML), or SSO(Single Sign ON), or OpenID Connection(OIDC) OAuth. OAuth most time is for Social media account authentication.
 
+* OIDC is a type of Identity Provider which uses OAuth
+* SAML is a type of Identity Provider wich is used for Single Sign-On
+
+* AWS CLI(command line interface)
+The CLI is installed used a python script
+
+* AWS SDK
+Available in multiple languages C++/ GO/ JAVA/JS/.NET/NodeJS/PHP/Python/Ruby
+
+Pragmatic Access Keys are needed for authentications used in code. Both of them are collectively known as AWS Credentials
+* Access Key ID
+* Secrete Access Key
+
+These are stored in  your user home. eg. (~/.aws/credentials). the credentials files allow to manage multiple credientials(called profiles).
+
+* DNS
+** SOA(Start of Authority)
+Every domain must have an SOA record. The SOA is a way for Domain Admins to provide information about the domain. eg, how often it is updated, what is the admin's email address, etc.
+A Zone file can contian only one SOA Record
+
+** DNS records
+*** A record, Address record
+*** CNAME(Canonical Names)
+*** NS Records
 
 
