@@ -78,5 +78,17 @@ Inline Policy --> | user| <-- Role <-- Policy/Policies
 | AWS Resources | <---Role(s) <---Policies
 -----------------
 
+# Amazon Cognito
+* Cognito User Pool, User Directory with authentication to IdP(Identity Provider) to grant access to your app
+* Cognito Identity Pools, Provide temporary credentials for users to access AWS services
+* Cognito Sync, Syncs users data and preferences across all devices
+
+## Web Identify Federation and IdP
+* Web Identitfy Federation, to exchange identify and security information between an identity provider(IdP) and an application
+* Identity Provider (IdP), a trusted provider of your users identify that lets you use authenticatioe to access other services. They could be: Facebook, Amazon, Google, Twitter, Github, LinkedIn.
+
+** Type of Identity Providers
+The tech that behind the Identity Providers. Most time it is Security Assertion Markup Language(SAML), or SSO(Single Sign ON), or OpenID Connection(OIDC) OAuth
+
 
 
