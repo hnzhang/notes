@@ -32,3 +32,29 @@ NAT instances  have to run within a public subnet
 
 
 # Guacamole Bastion
+
+#Identity and Access Management
+## Users
+### A user can have  a role directly attached
+### A user can have  a policy directly attached
+# Groups -- a user can belong to a group.
+## 
+## Roles -- 
+* A role can have many policies attached
+* Various AWS resources allow you to attach role directly to them
+
+## Policies
+
+----------------------
+| User Group         |
+| usr1 usr2 ...      |<--Role(s) <--Policies
+----------------------
+
+Inline Policy --> | user| <-- Role <-- Policy/Policies
+
+-----------------
+| AWS Resources | <---Role(s) <---Policies
+-----------------
+
+
+
