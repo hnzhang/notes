@@ -115,4 +115,19 @@ A Zone file can contian only one SOA Record
 *** CNAME(Canonical Names)
 *** NS Records
 
+** Route53 
+Route53 is the DNS Service from AWS
 
+* EC2
+ _EC2 Instance profile can have an IAM role attached to avoid embedding AWS credentials_
+ ## EC2 Placement groups
+* Cluster, to pack EC2 instances closely together inside an AZ. It has very low latency network performance. It is well suitable for high performance computing applications. Also Cluster cannot be cross multiple AZ.
+
+* Partition. each partition do not share the underlying hardware with each other. It is well suitable for large distributed and replicated workload(Hadoop, Cassandra, Kalfka, etc)
+
+* Spread. Each instance is placed on a different rack. When critical instancs shoul dbe kept separate from each other, Spread should be used. You can spread a max of 7 instances. Spreads can be cross multiple AZ.
+
+## UserData
+UserData can be provided to an EC2 instance. UserData is a script, which will be automatically run when the EC2 instance is launched.
+## MetaData
+From within an instance of EC2, a special URL endpoint can be accessed(http://169.254.169.254/latest/meta-data) to get information about the instance(like public-ipv4, ami-id, instance-type, mac, hostname, etc). these can work together with UserData for advanced AWS staging automation
