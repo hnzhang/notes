@@ -3,6 +3,9 @@
 * ENI--elastic network interface
 * AMI
 * CIDR block
+* Bastion
+* AWS Marketplace 
+# Internet Gateway
 
 # Security Goups
 to define rules for inbound/outbound network traffic
@@ -27,3 +30,5 @@ for private subnet
 
 NAT instances  have to run within a public subnet
 
+
+# Guacamole Bastion
