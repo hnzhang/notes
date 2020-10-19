@@ -33,7 +33,7 @@ NAT instances  have to run within a public subnet
 
 # Guacamole Bastion
 
-#Identity and Access Management
+# Identity and Access Management
 ## Users
 ### A user can have  a role directly attached
 ### A user can have  a policy directly attached
@@ -44,10 +44,32 @@ NAT instances  have to run within a public subnet
 * Various AWS resources allow you to attach role directly to them
 
 ## Policies
+### Managed Policies
+for example, AmazonECSFullAccess
+### Customer Managed Policies
+### Inline Policies
+
+Policy is structured in JSON
+{
+"Version": "2012-07-09",
+"Statement":[{
+  "Sid": "Deny-Barcley-S3-Access",
+  ...
+},{
+}
+...
+]
+}
+
+Password policy
+
+Pragamtic Access Keys
+
+MFA--Multi-Factor Authentication
 
 ----------------------
-| User Group         |
-| usr1 usr2 ...      |<--Role(s) <--Policies
+|| User Group         |
+|| usr1 usr2 ...      |<--Role(s) <--Policies
 ----------------------
 
 Inline Policy --> | user| <-- Role <-- Policy/Policies
