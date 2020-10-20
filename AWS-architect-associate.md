@@ -164,3 +164,6 @@ AMI is region specific. You you need an AMI which is availble in another region,
 When a new instance is added, it uses a Launch Configuration, which holds the configuration values for that new Instance. eg. AMI, Instance Type, Role, etc.
 Launch Configuration cannot be edited/modified and must be cloned or create a new one. As a result, Launch Configuration must be manually updated in by editing the Auto Scaling  settings.
 ** Scaling Policies with Steps. 
+
+* ELB - Elastic Load Balancer
+ELB can help distribute incoming application traffic cross multiple targets, such as EC2 Instances, Containers, IP addresses, and lambda functions.
