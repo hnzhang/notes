@@ -118,7 +118,7 @@ A Zone file can contian only one SOA Record
 ** Route53 
 Route53 is the DNS Service from AWS
 
-* EC2
+# EC2
  _EC2 Instance profile can have an IAM role attached to avoid embedding AWS credentials_
  ## EC2 Placement groups
 * Cluster, to pack EC2 instances closely together inside an AZ. It has very low latency network performance. It is well suitable for high performance computing applications. Also Cluster cannot be cross multiple AZ.
@@ -131,3 +131,36 @@ Route53 is the DNS Service from AWS
 UserData can be provided to an EC2 instance. UserData is a script, which will be automatically run when the EC2 instance is launched.
 ## MetaData
 From within an instance of EC2, a special URL endpoint can be accessed(http://169.254.169.254/latest/meta-data) to get information about the instance(like public-ipv4, ami-id, instance-type, mac, hostname, etc). these can work together with UserData for advanced AWS staging automation
+## EC2 Pricing Models
+## On-Demand Least Commitment, charted by hours or by minutes.
+## Spot Biggest Saving upto 90%
+## Reserved Instances(RI) Beset Long-Term upto 75%
+## Dedicated Most Expensive Model
+
+## AMI 
+Amazon Machine Image(AMI) provides the info required to launch an instance.
+You can turn your EC2 instances into AMIs
+
+AMI can hold the following info,
+* a template for the root volume for the instance(EBS snapshot or instance store template) eg. an operating system, an application server, and applications.
+* Launch permissions that control which AWS accounts can use the AMI to launch instances
+* A block device mapping that specifies the volumes to attach to the instance when it is launched.
+
+Using System Management Automation, AMIs can be routinely patched with security updates.
+AMIs are used with LaunConfigurations. When you want to roll out updates to multiple instances you mkae a copy of your LaunchConfiguration with the new AMI
+
+AMI is region specific. You you need an AMI which is availble in another region, you can copy the AMI into destination region.
+# AWS Marketplace
+
+# ECS Auto Scaling Group
+* Capacity Setting, min instances, max instances, ideal instances
+* Health Check Replacement, 
+** EC2 Health Check Type for software or hardware issue
+** ELB Health Check Type for respond. If ELB find the endpoint is not healthy, ELB forwards  this info to ASG, which will terminate the unhealthy instance
+* Scaling Policies
+** Target Tracking Scaling Policy. Scaling Out is to add more instances, and Scaling In is to remove instances
+** Simple Scaling Policy. Scaling when the alarm is breached. It is legacy scaling policy, and is not recommended. Scaling Up is to increase the size of the instance.
+
+When a new instance is added, it uses a Launch Configuration, which holds the configuration values for that new Instance. eg. AMI, Instance Type, Role, etc.
+Launch Configuration cannot be edited/modified and must be cloned or create a new one. As a result, Launch Configuration must be manually updated in by editing the Auto Scaling  settings.
+** Scaling Policies with Steps. 
