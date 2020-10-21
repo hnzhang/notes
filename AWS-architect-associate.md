@@ -50,6 +50,7 @@ for example, AmazonECSFullAccess
 ### Inline Policies
 
 Policy is structured in JSON
+```
 {
 "Version": "2012-07-09",
 "Statement":[{
@@ -60,7 +61,7 @@ Policy is structured in JSON
 ...
 ]
 }
-
+```
 Password policy
 
 Pragamtic Access Keys
@@ -68,14 +69,14 @@ Pragamtic Access Keys
 MFA--Multi-Factor Authentication
 
 ----------------------
-|| User Group         |
-|| usr1 usr2 ...      |<--Role(s) <--Policies
+ User Group         |
+ usr1 usr2 ...      |<--Role(s) <--Policies
 ----------------------
 
 Inline Policy --> | user| <-- Role <-- Policy/Policies
 
 -----------------
-| AWS Resources | <---Role(s) <---Policies
+ AWS Resources | <---Role(s) <---Policies
 -----------------
 
 # Amazon Cognito
@@ -106,14 +107,14 @@ Pragmatic Access Keys are needed for authentications used in code. Both of them 
 These are stored in  your user home. eg. (~/.aws/credentials). the credentials files allow to manage multiple credientials(called profiles).
 
 * DNS
-** SOA(Start of Authority)
+  * SOA(Start of Authority)
 Every domain must have an SOA record. The SOA is a way for Domain Admins to provide information about the domain. eg, how often it is updated, what is the admin's email address, etc.
 A Zone file can contian only one SOA Record
 
-** DNS records
-*** A record, Address record
-*** CNAME(Canonical Names)
-*** NS Records
+  * DNS records
+    * A record, Address record
+    * CNAME(Canonical Names)
+    * NS Records
 
 ** Route53 
 Route53 is the DNS Service from AWS
@@ -155,15 +156,15 @@ AMI is region specific. You you need an AMI which is availble in another region,
 # ECS Auto Scaling Group
 * Capacity Setting, min instances, max instances, ideal instances
 * Health Check Replacement, 
-** EC2 Health Check Type for software or hardware issue
-** ELB Health Check Type for respond. If ELB find the endpoint is not healthy, ELB forwards  this info to ASG, which will terminate the unhealthy instance
+ * EC2 Health Check Type for software or hardware issue
+ * ELB Health Check Type for respond. If ELB find the endpoint is not healthy, ELB forwards  this info to ASG, which will terminate the unhealthy instance
 * Scaling Policies
-** Target Tracking Scaling Policy. Scaling Out is to add more instances, and Scaling In is to remove instances
-** Simple Scaling Policy. Scaling when the alarm is breached. It is legacy scaling policy, and is not recommended. Scaling Up is to increase the size of the instance.
+ * Target Tracking Scaling Policy. Scaling Out is to add more instances, and Scaling In is to remove instances
+ * Simple Scaling Policy. Scaling when the alarm is breached. It is legacy scaling policy, and is not recommended. Scaling Up is to increase the size of the instance.
 
 When a new instance is added, it uses a Launch Configuration, which holds the configuration values for that new Instance. eg. AMI, Instance Type, Role, etc.
 Launch Configuration cannot be edited/modified and must be cloned or create a new one. As a result, Launch Configuration must be manually updated in by editing the Auto Scaling  settings.
-** Scaling Policies with Steps. 
+* Scaling Policies with Steps. 
 
 # ELB - Elastic Load Balancer
 ELB can help distribute incoming application traffic cross multiple targets, such as EC2 Instances, Containers, IP addresses, and lambda functions.
