@@ -87,8 +87,7 @@ Inline Policy --> | user| <-- Role <-- Policy/Policies
 ## Web Identify Federation and IdP
 * Web Identitfy Federation, to exchange identify and security information between an identity provider(IdP) and an application
 * Identity Provider (IdP), a trusted provider of your users identify that lets you use authenticatioe to access other services. They could be: Facebook, Amazon, Google, Twitter, Github, LinkedIn.
-
-** Type of Identity Providers
+  * Type of Identity Providers
 The tech that behind the Identity Providers. Most time it is Security Assertion Markup Language(SAML), or SSO(Single Sign ON), or OpenID Connection(OIDC) OAuth. OAuth most time is for Social media account authentication.
 
 * OIDC is a type of Identity Provider which uses OAuth
@@ -116,7 +115,7 @@ A Zone file can contian only one SOA Record
     * CNAME(Canonical Names)
     * NS Records
 
-** Route53 
+* Route53 
 Route53 is the DNS Service from AWS
 
 # EC2
