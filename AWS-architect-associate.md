@@ -182,3 +182,18 @@ to bind a user's session to a specific EC2 instance to ensure all the requests f
 It is typically used with Classic Load Balancer. It can also be enabled for ALB though it can only be set on a Target Group instead of individual EC2 instances.
 Cookies are used to remember which EC2 instance.
 It is very useful when specific information is only stored locally on a single instance.
+
+## X-Forwarded-For(XFF) Header
+If you need the IPv3 address of a user, check the X_Forwarded-For header. The X-Forwarded-For header is a command method for identifying the originating IP address of a client connecting to a web server through an HTTP proxy or a load balancer. See Mozilla website for more info, https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
+
+## Health Checks from ELB
+Instances are monitored by ELB report back Health Checks as InService, or OutofService
+Health Checks communicate directly with the instance to determine its state.
+ELB doesn't kill/terminate  an unhealthy instance. It will just forward traffic to  healthy instances
+For ALB and NHL, the Health Checks are found on the Target Group
+
+## Cross-Zone Load Balancing
+This is only available for Classic and Network Load Balancer
+Basically, the idea is to have a Load Balancer work on top of a group of child Load Balancers cross multiple Zones. Each Child Load Balancer is corresonding for a Zone. 
+When this is enabled, the traffic will be load balanced cross all the instances in all the zones. Otherwise, the traffic is only balanced inside local zone.
+
