@@ -165,5 +165,11 @@ When a new instance is added, it uses a Launch Configuration, which holds the co
 Launch Configuration cannot be edited/modified and must be cloned or create a new one. As a result, Launch Configuration must be manually updated in by editing the Auto Scaling  settings.
 ** Scaling Policies with Steps. 
 
-* ELB - Elastic Load Balancer
+# ELB - Elastic Load Balancer
 ELB can help distribute incoming application traffic cross multiple targets, such as EC2 Instances, Containers, IP addresses, and lambda functions.
+ELB is AWS solution for load balancing traffic, and there are 3 types,
+1. Application Load Balancer(HTTP or HTTPS, working on Layer 7), ALB
+11. Web Application Firewall(WAF) can be attached to ALB.
+1. Network Load Balencer ( work on Layer 4--transport), NLB
+1. Classic Load Balancer, CLB(legacy)
+1. It is create for Web Applications
