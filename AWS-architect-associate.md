@@ -171,8 +171,8 @@ ELB is AWS solution for load balancing traffic, and there are 3 types,
 1. Application Load Balancer(HTTP or HTTPS, working on Layer 7), ALB
 11. Web Application Firewall(WAF) can be attached to ALB.
 1. Network Load Balencer ( work on Layer 4--transport), NLB
-11. It can handle millions of request per second while still maintain extremely low latency.
-11. It can perform cross-zone load balance.
-11. Great for Multiplayer Video Games or when Netowrk performance is critical.
+ 1. It can handle millions of request per second while still maintain extremely low latency.
+ 1. It can perform cross-zone load balance.
+ 1. Great for Multiplayer Video Games or when Netowrk performance is critical.
 1. Classic Load Balancer, CLB(legacy)
 1. It is create for Web Applications
