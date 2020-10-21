@@ -176,3 +176,9 @@ ELB is AWS solution for load balancing traffic, and there are 3 types,
    1. Great for Multiplayer Video Games or when Netowrk performance is critical.
 1. Classic Load Balancer, CLB(legacy)
 1. It is create for Web Applications
+
+## Sticky Sessions on ELB
+to bind a user's session to a specific EC2 instance to ensure all the requests from that session are sent to the same instance.
+It is typically used with Classic Load Balancer. It can also be enabled for ALB though it can only be set on a Target Group instead of individual EC2 instances.
+Cookies are used to remember which EC2 instance.
+It is very useful when specific information is only stored locally on a single instance.
