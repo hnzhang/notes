@@ -169,13 +169,19 @@ Launch Configuration cannot be edited/modified and must be cloned or create a ne
 ELB can help distribute incoming application traffic cross multiple targets, such as EC2 Instances, Containers, IP addresses, and lambda functions.
 ELB is AWS solution for load balancing traffic, and there are 3 types,
 1. Application Load Balancer(HTTP or HTTPS, working on Layer 7), ALB
-11. Web Application Firewall(WAF) can be attached to ALB.
+   1. Web Application Firewall(WAF) can be attached to ALB.
+   1. ALB is great for web applicaitons.
+   1. ALB has Listeners, Rules, and Target Groups to route traffic
+
 1. Network Load Balencer ( work on Layer 4--transport), NLB
    1. It can handle millions of request per second while still maintain extremely low latency.
    1. It can perform cross-zone load balance.
    1. Great for Multiplayer Video Games or when Netowrk performance is critical.
+   1. NLB uses Listeners and Target Groups to route traffic.
+   1. NHL is for TCP/UDP
 1. Classic Load Balancer, CLB(legacy)
-1. It is create for Web Applications
+   1. use Listners and EC2 instances are directly registered as targets to CLB
+
 
 ## Sticky Sessions on ELB
 to bind a user's session to a specific EC2 instance to ensure all the requests from that session are sent to the same instance.
@@ -196,4 +202,20 @@ For ALB and NHL, the Health Checks are found on the Target Group
 This is only available for Classic and Network Load Balancer
 Basically, the idea is to have a Load Balancer work on top of a group of child Load Balancers cross multiple Zones. Each Child Load Balancer is corresonding for a Zone. 
 When this is enabled, the traffic will be load balanced cross all the instances in all the zones. Otherwise, the traffic is only balanced inside local zone.
+
+## Request Routing -- Request Routing
+Request Routing is to apply rules to incoming requeste and then either forward or redirect the traffic based on the fllowing
+* Host header
+* Http header
+* Source IP
+* Http head method
+* Path
+* Query string
+
+ELB cannot go cross regions. You must create one per region.
+Amazon Certification Manager SSL can be attached to ELB for SSL
+
+# AWS System Manager
+## Session Manager
+To manage EC2 instance with SSH through the web.
 
