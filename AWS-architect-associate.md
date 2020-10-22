@@ -219,3 +219,23 @@ Amazon Certification Manager SSL can be attached to ELB for SSL
 ## Session Manager
 To manage EC2 instance with SSH through the web.
 
+#Elastic File System(EFS)
+Scalable, elastic, cloud-native NFS file system. As a single file system, it can be attached to multiple EC2 instances(the file volume must be in the same VPC). 
+No worries about running out of managing disk space. Volumne can scale up to petabyte size storage
+It can support thousands of concurrent connections over NFS.
+Grow and shrink automatically based on data stored(elastic)
+EC2 instances install the NFS v4.1 client to mount the EFS volume
+Pricing $0.30/GB/month
+
+# Elastic Block Storage
+## What is IOPS?
+IOPS stands for Input/Out per second. It is the speed at which non-contiguous reads and writes can be performed on a storage media. high IO = lots of small read and writes
+
+## What is throughput?
+The data transfer rate to and from the storage media in megabytes per second
+
+## What is Bandwidth?
+Bandwith is the measurement of the total possible speed of data movement along the network
+
+Think of Bandwdith as the Pipe and throughput as the water
+
