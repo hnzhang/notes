@@ -239,12 +239,33 @@ Bandwith is the measurement of the total possible speed of data movement along t
 
 Think of Bandwdith as the Pipe and throughput as the water
 
-5 typpes of EBS Storage
+## 5 typpes of EBS Storage
 
-|Type | code |Description
+|Type | code |Description|
 |------|-----|--------|
 | General purpose(SSD) | gp2 | for general purpose usage without specific requirement |
-----------------------------------------
-1. Provisioned IOPS(SSD) io1. when you require really fast input & output
-1. Throughput Optimized(HDD) magnetic drive optimized for quick throughput
-1. Cold HDD
+| Provisioned IOPS(SSD) |io1 | when you require really fast input & output |
+| Throughput Optimized(HDD)| st1 magnetic drive optimized for quick throughput |
+| Cold HDD | sc1 | Lowest cost HDD volume for infrequent access workloads
+| EBS Magnetic | standard | Previous generation HDD|
+
+## How to move EBS volumes
+### From one AZ to another AZ
+1. take a snapshot of the volume
+1. create an AMI form the snapshot
+1. lauch new EC2 instance in desired AZ
+### From one region to another
+1. Take a snapshot of the volume
+1. Create an AMI from the snapshot
+1. copy the AMI to another region
+1. lauch a new EC2 instance from the copied AMI.
+
+## EBS vs Instance Store Volumes
+An EC2 instance can be backed(root device) by an EBS volume or Instance Store Volume
+
+| EBS Volume | Instance Store Volume(Ephemeral)
+|---|----|
+| A durable , block-level storage device that you can attache to a single EC2 instance | A temp storage type lcoated on disks that a physically attached to a host machine
+| EBS volume create from an EBS snapshot |  An Instance Storage Volume is created from a template stored in S3
+| * Can start and stop the instances | * Cannot stop instance and can only terminate
+| * Daata will persist if you reboot your system | * Data will be lost in case of the instance fails or being terminated
