@@ -12,19 +12,19 @@ to define rules for inbound/outbound network traffic
 
 ## limits.
 ### for regsion
- --default 2,500, max 10,000
+ * default 2,500, max 10,000
  ### per security group,
  * 60 inbound
  * 60 outbound
  ### for Elastic Network Interface(ENI)
- --default 5 security groups
- --max 16 security groups
+ * default 5 security groups
+ * max 16 security groups
  
 # NAT
 Network Address translation
 for private subnet
 1. outbound tranffic to gain the internet
-2. if two networks which have conflicting network addresses, NAT can help to make the addresses aggreeable
+1. if two networks which have conflicting network addresses, NAT can help to make the addresses aggreeable
 ## NAT Instances is legacy implementation by EC2 instances.
 ## NAT Gateways is a managed service which launches redundant instances within the selected AZ.
 
@@ -50,7 +50,7 @@ for example, AmazonECSFullAccess
 ### Inline Policies
 
 Policy is structured in JSON
-```
+```json
 {
 "Version": "2012-07-09",
 "Statement":[{
@@ -68,9 +68,9 @@ Pragamtic Access Keys
 
 MFA--Multi-Factor Authentication
 
-----------------------
+
  User Group         |
- usr1 usr2 ...      |<--Role(s) <--Policies
+ usr1 usr2 ...      | <--Role(s) <--Policies
 ----------------------
 
 Inline Policy --> | user| <-- Role <-- Policy/Policies
@@ -271,3 +271,19 @@ An EC2 instance can be backed(root device) by an EBS volume or Instance Store Vo
 | * Daata will persist if you reboot your system | * Data will be lost in case of the instance fails or being terminated
 
 EBS is a virtual hard disk. Snapshots are a point-in-time copy of that disk existing on S3.
+
+# CloudFront 
+Content Distribution Network
+* A distributio is a collection of Edge Locations with a specified Origin
+* the Origin could be EC2, ELB, Route53, or S3 bucket
+* There are two types of distrutions,
+1. Web(for static content of websites)
+1. RTMP(Real Time Message Protocal) for streaming media
+
+## Configuration on CloudFront
+* Behaviors -- to redirect HTTPs, restrict HTTP, restrick Viewer Access, Set TTLs
+* Invalidations -- to manually invalidate cache on specific files via invalidations
+* Error Pages -- to serve up custom error pages, such as 404.
+* Restrictions -- for example, Geo Restrictions can be used to specify whitelist or blacklist for specific countries
+
+
