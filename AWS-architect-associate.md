@@ -239,3 +239,12 @@ Bandwith is the measurement of the total possible speed of data movement along t
 
 Think of Bandwdith as the Pipe and throughput as the water
 
+5 typpes of EBS Storage
+-------------------
+Type | code |Description
+-------------------
+ General purpose(SSD) |gp2 | for general purpose usage without specific requirement
+----------------------------------------
+1. Provisioned IOPS(SSD) io1. when you require really fast input & output
+1. Throughput Optimized(HDD) magnetic drive optimized for quick throughput
+1. Cold HDD
