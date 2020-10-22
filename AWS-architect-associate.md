@@ -245,7 +245,7 @@ Think of Bandwdith as the Pipe and throughput as the water
 |------|-----|--------|
 | General purpose(SSD) | gp2 | for general purpose usage without specific requirement |
 | Provisioned IOPS(SSD) |io1 | when you require really fast input & output |
-| Throughput Optimized(HDD)| st1 magnetic drive optimized for quick throughput |
+| Throughput Optimized(HDD)| st1 | magnetic drive optimized for quick throughput |
 | Cold HDD | sc1 | Lowest cost HDD volume for infrequent access workloads
 | EBS Magnetic | standard | Previous generation HDD|
 
@@ -269,3 +269,5 @@ An EC2 instance can be backed(root device) by an EBS volume or Instance Store Vo
 | EBS volume create from an EBS snapshot |  An Instance Storage Volume is created from a template stored in S3
 | * Can start and stop the instances | * Cannot stop instance and can only terminate
 | * Daata will persist if you reboot your system | * Data will be lost in case of the instance fails or being terminated
+
+EBS is a virtual hard disk. Snapshots are a point-in-time copy of that disk existing on S3.
