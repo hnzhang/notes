@@ -356,6 +356,37 @@ Replicas could be in
 
 Replicas can be promoted to their own database, but this will break replication.
 No Automatic failover is available for replicas if the primary copy fails. Manual update of urls has to be done to point at copy
-<span stype="color:blue">Database engine upgrade is independant from the source instance.</span>
+Database engine upgrade is independant from the source instance.
 
+Free Performance Insight to check the performance graph.
+
+## RDS Serverless
+much cheaper database solution, especially with low traffic volume. For example during project development.
+you can use cloud9 to manage it
+
+RDS instances are managed by AWS. Therefore, you cannot SSH into the VM running the databases.
+
+
+# Aurora
+Fully managed PostgreSQL or MySQL compatible database designed by default to scale and fine-tuned to be really fast
+Aurora MySQL is 5x better than traditional MySQL
+Aurora PostgreSQL is 3x better than tranditional PostgreSQL
+1/10th the costs of other solutions offering similar performance and availability
+
+## Scalability
+Start with 10G storage, and scale in 10G increments up to 64TB
+Storage is auto scaling
+Computing resources can scale all the way up to 32 vCPUs and 244GB memory
+## Availability
+A minimum 3 AZs, and each contains 2 copies of your data at all the time. That means 6 copies. Losing up to 2 copies of your data without affecting write availability
+Losing up to 3 copies of your data without affecting read availability
+
+## Fault Tolerance and Durability
+Backup and Failover is handled automatically
+Storage is self-healing, in that data blocks and disks are continuously scanned for errors and repaired automatically.
+
+## Aurora can run serverless
+Idea for infrequent usage of database
+
+Aurora is allowed up to 15 Aurora Replicas
 
