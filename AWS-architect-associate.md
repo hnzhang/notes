@@ -7,6 +7,9 @@
 * AWS Marketplace 
 * Signed URL
 * Signed Cookie
+* Key Management Service multi-tenant HSM
+* CloudHSM single-tenant HSM
+
 
 # Internet Gateway
 
@@ -416,4 +419,48 @@ Data are used to power a custom Business Intelligence tool.
 
 A 3rd-party library(like JDBC, ODBC, etc) can be used to connect and query from Redshift for data
 
+Columnar Store is the primary reason Redshift can perform very well.
+## Configurations of Redshift
+* Single Node 
+The node comes in sizes of 160 GB. You can launch a single node to get started with Redshift
+* Multi-Node
+You can launch a cluster of nodes with Multi-Node mode
+* Lead Node --to manage client connections and receive queries
+* Compute Node -- to store data and performs queries up to 128 compute nodes.
 
+### Node type regarding EC2
+the smalleset is dc2.large
+* dc is for Dense Compute. best for high performance, but they have less storage
+* ds is for Dense Storage. This is to create clusters in which you have a lot of data.
+
+Redshift uses multiple compression technologies to achieve significant compression relative to tranditional relational data stores
+Similar data are stored sequentially on disk
+It does not require indexes or materialized views, which saves a lot of space compared to traditional systems.
+When it loads data to an empty table, data is sampled and the most appropriate compression scheme is selected automatically
+
+## Redshift Processing
+Redshift uses Masive Parallel Processing(MPP).
+Automatically distributes data and query loads across all nodes
+It lets you easily add new nodes to your data warehouse while still maintaining fast query performance
+
+## Backups
+Backups are enabled by default with 1 day retention peroid. Retention peroid can be modified up to 35 days.
+Redshift always attempts to maintain at least 3 copies of your data,
+* the original copy
+* replica on the compute nodes
+* backup copy in S3
+Snapshots can be asynchronously replicated into S3 in a different region
+
+## Billing
+Compute Node Hours
+* The total number of hours across all nodes in the billing period
+* Billed for i unit per hour, per node
+* Not charged for leadeer node hours, only compute notes incur changes
+Backup
+* backups are stored in S3 and you are billed the S3 storage fees
+Data Transfer
+* Billed for data transfer into with ODBC/JDBC
+* Billed for data transfer cross regions
+
+## Redshift availability
+Redshift is single-AZ. To run in multi-AZ you whould have to run multiple Redshift Clusters in different AZ with the same inputs. Snapshots can be saved into different AZ.
