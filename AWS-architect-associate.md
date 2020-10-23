@@ -390,3 +390,30 @@ Idea for infrequent usage of database
 
 Aurora is allowed up to 15 Aurora Replicas
 
+# Amazon Redshift
+Redshift is fully managed Petabyte-size Data Warehouse. it analyze(by running complex SQL queries) on massive amounts of data Columnar Store database
+
+## What is  Data Warehouse
+* What is  a Database Transaction?
+A Transaction symbolize a unit of work performed within  a database management system.(for example, reads and writes)
+
+| Database | Data Warehouse |
+|---|---|
+|Online Transaction Processing(OLTP) | Online Analytical Processing(OLAP) |
+|tp store current transactions| to store large quantities of history data |
+|to enable *fast accesss to specific transactions* | to enable fast, complex queries across all the data |
+|eg, add items to your shoping list, single source| Generating reports, Multiple Sources |
+| Short transactions with emphasis on writes | long transactions with emphasis on reades|
+
+
+Use Case of Redshift
+continuous data copied from 
+1. EMR
+1. S3
+1. DynamoDB
+
+Data are used to power a custom Business Intelligence tool.
+
+A 3rd-party library(like JDBC, ODBC, etc) can be used to connect and query from Redshift for data
+
+
