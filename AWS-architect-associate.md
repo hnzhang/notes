@@ -5,6 +5,9 @@
 * CIDR block
 * Bastion
 * AWS Marketplace 
+* Signed URL
+* Signed Cookie
+
 # Internet Gateway
 
 # Security Goups
@@ -55,10 +58,8 @@ Policy is structured in JSON
 "Version": "2012-07-09",
 "Statement":[{
   "Sid": "Deny-Barcley-S3-Access",
-  ...
 },{
 }
-...
 ]
 }
 ```
@@ -285,5 +286,76 @@ Content Distribution Network
 * Invalidations -- to manually invalidate cache on specific files via invalidations
 * Error Pages -- to serve up custom error pages, such as 404.
 * Restrictions -- for example, Geo Restrictions can be used to specify whitelist or blacklist for specific countries
+
+## Lambda@Edge
+Lambda@Edge functions can be used to override the behavior of request and respond
+$ types of Lambda@Edge
+1. View Request --when CloudFront receives a requeset from a viewer
+1. Origin Request -- before CloudFront forward a request to the origin
+1. Origin Response -- When CloudFront receives a response from the origin
+1. View Response -- Before the CloudFront forward the response to the view
+
+Viewer --> View Request (λ) -> CloudFront --> Origin Requset (λ) --> Origin --> Origin Response (λ) --> CloudFront -> Viewer Response (λ) -->Viewer
+
+* Origin Identity Access(OAI) is used to access private S3 buckets
+
+#RDS Relational Database Service
+A managed Relational Database service. Support multiple SQL engines. easy to scale, backup and secure
+
+Engines,
+1. Amazon Aurora
+1. MySQL
+1. MariaDB -community-developed, commercially supported fork of MySQL
+1. PostgreSQL
+1. Oracle
+1. Microsoft SQL Server
+
+## RDS Encryption
+Encryption can be turned on for all RDS engines. some old versions may not support encryption
+It will encrypt the automated backups, snapshots, and read replicas
+Encryption is handled by AWS Key Management Service(KMS)
+ 
+## RDS Backup
+### automated backups 
+1. choose a Retention Period between 1 and 35 days
+1. Store transaction log throughout the day
+1. Automated backups are enabled by default
+1. All data is stored inside S3
+1. There is no additional chage for backup storage
+1. You define your backup window
+1. Storeage I/O may be suspended during backup
+### Manual Sanpshots
+* Taken manually by the user
+* Backups persist even if you delete the original RDS instance
+
+## Restore Backup
+When recovering, AWS takes the most recent daily backup, and apply transaction log data relevant to that day. This allow point-in-time recoery down to a second inside the relenttion period.
+Backup data is never restored on top of an existing instance. It always creates a new instance, which will have a new DNS endpoint.
+
+### RDS to multiple AZ (Master and Save)
+This is to ensure database service remain available if another AZ become unavailable.
+Master and Slave live in different AZ, and Slave just standby and sync with the Master. When the master gets inavailable, the Automatic Failover Protection will happen, and the Slave will be promoted as a Master.
+
+Only Database Engine on primary instance is active. That means it cannot be used as database service.
+
+Automated backups are taken from standby/Slave。
+Database Engine upgrade happens on primary instance
+
+Replication from the Master to the Slave is synchronous
+
+### RDS Read Replicas
+Read-Replicas can be created so that mulitple copies of the database get available. These copies are read-only(no writes), and intended to alleviate the workload of your primary database to improve performace
+
+Automatic Backups must be enabled to use Read Replica. That is how Read Replicas are created. Asyc replication happens between the primary RDS instance and the replicas.
+You can have max 5 Replica per primary database server, and each replica has its own DNS endpoint
+
+Replicas could be in 
+1. Multi-AZ
+1. Another Region
+1. Replicas of other read Replicas
+
+Replicas can be promoted to their own database, but this will break replication.
+No Automatic failover is available for replicas if the primary copy fails. Manual update of urls has to be done to point at copy
+<span stype="color:blue">Database engine upgrade is independant from the source instance.</span>
 
 
