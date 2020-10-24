@@ -533,6 +533,7 @@ How often CloudWatch collect and update metrics data for you?
 |---|---|---|
 |Basic Monitoring | 5 minutes | 1 minute / 3 Minutes / 5 Minutes |
 | Detailed Monitoring | 1 minute interval |   |
+
 Most of services are 1 minute by default. 
 
 For EC2, by default, it is 5 minutes, and extra cost needed to turn it into detailed monitoring.
@@ -546,10 +547,103 @@ By Default, some metrics for EC2 instances are not tracked. and CloudWatch agent
 | status Checks(Hypervisor Status, EC2 instance status) | Page file utilization, log collection|
 
 
+Amazon EventBridge is the same as CloudWatch Events, but with new interfaces
+
+
+# CloudTrail
+CloudTrail is a Logs API calls between AWS Services when you need to know **who to blame**.
+
+AWS CloudTrail is a service that enable **governance**, **compliance**, **operational auditing**, and **risk auditing** of your AWS account. AWS CloudTrail is used to **monitor API calls** and **Actions** made by an AWS Account. It can easily identify which users and accounts made the calls to AWS like,
+* Where -- Source IP Address
+* When -- EventTime
+* Who -- User, UserAgent
+* What -- Region, Resource, Action
+
+In your account, CloudTrail is already logging by default, and will collect logs for last 90 days via Event History.
+## Trail
+If you need more than 90 days you need to create a **Trail**.
+Trails are outputs to S3 and do not have GUID like event history. To analyze a **Trail**, **Amazon Athema** has to be used.
+### Trail options
+* Log cross all the regions
+* cross all the account in  an organization
+* encrypted via Server Side Encryption via Key Management Service(SSE-KMS)
+* turn on Log File Validation  in case it is tampered by someone else.
+
+CloudTrail can be set to deliver events to a CloudWatch log
+### Management Events vs Data Events in CloudTrail
+
+|Management Events | Data Events|
+|---|---|
+|Tracks Management Operations.| Traks specific operations for specific AWS Services. High Volume logging and result in additional cost. 
+|Turned on by default, Cannot be off| Turned off by default|
+|Configuring security/Registering devices | The two services can be tracked are **S3** and **Lambda**|
+|Configuring Rules for routing data | Track actions such as, GetObject, DeleteObject, PutObject
+|Setting up logging |
+
+# AWS Lambda
+Lambda is a compute service, that runs code without provisioning or managing servers. Servers are automatically start and stop when needed. It can be considered as Serverless Functions. Pay per invocation
+It can scales automatically to a few or a 1000 lambda functions concurrently in seconds.
+Natively support 7 languages: Ruby, Python, Java, GO, Powershell, NodeJS, C#
+You can create your own custom runtime environments.
+
+Lambda is commonly used to glue different services together.
+
+**Example Use Case: Processing Thumbnails**
+A web service allows users to upload profile photo. they are stored in S3 bucket. An event trigger can be setup so that when a profile photo comes in, a Lambda can be invoked to generate a thumbnail and store it back to the bucket.
+
+**Example Use Case: Contact Email Form**
+A company has a web form as contact email. the form can be submitted via API Gateway Endpoint. That endpoint can trigger a lambda which validate the form data and if valid, the data will be saved to DynamoDB and send an email notification via SNS to the company.
+
+Lambda can be integrated into 3rd party sources via Amazon EventBridge
+## Lambda Pricing,
+* 1st 1 million requests per month are free. after that, $0.20 per additional 1 million reqests
+* 400,000 GB ses free per month. After that, 0.0000166667 for every GB sec
+* the price will vary on the amount of memory you allocate. 128M * 3o M executed per month * 200 ms run time per invocation = $5.83
+
+## Default and Limits
+* By default, you can have 1000 lambda, but you can ask AWS support for limit increase
+* /tmp folder can contian up to 500MB
+* By default, Lambda runs in no VPC. You can set them to run in your VPC, but your lambda will lose internet access.
+* max timeout can be 15 minutes. If timeout goes beyond that, you probably should consider using FarGate.
+* memory can be set between 128MB to max 2008MB at an increment of 64M
+## Cold Start and Warm Server  and Pre Warm
+
+
+# Simple Queue Service(SQS)
+Simple Queue Service is fully mamaged queuuing service that enable you to decouple and scale microservices, distributed systems, and serverless applications.
+
+## Queueing vs Streaming
+|Queueing | Streaming |
+|---|---|
+| Generally messages will be deleted once they are consumed | Multiple Consumers can react to events/messages
+|Simple communication | Events live in the stream for long periods, so complex operations can be applied.
+|Not Real-time | Realtime
+| have to pull| |
+| not reactive | |
+| Sidekiq, SQS,  RabbitMQ| Kafka, Kinesis|
+
+Message Size is between 1 byte and 256K
+Amazon SQS extended client lib for java let you send message 256K to 2GB in size via storage in S3 by referencing to S3 Object
+## Message Retention
+By default 4 days. It can be adjust from 60 seconds to max 14 days.
+## Queue Types
+1.  Standard Queues allows you a nearly unlimited numbers of transactions per seconds It guarantees that a message will be delivered **AT LEAST once**. **More than one copy** of a message could be potentialy delivered out of order. It provides **best-effort ordering** that helps ensure a message is generally delivered.
+2. FIFO queue supports multiple ordered message groups within a single queue. It limits to 300 transactions per second.
+
+## Visibility Timeout
+30 secs by defualt. range ( 0 secs to 12 hrs)
+This is to prevent another app from reading a message while another app is busy with that message, aka, to avoid someone doing the same task.
+A visibility time-out is the peroid of time that message are invisible in the SQS queue after a reading pick up the message.
+The message will be deleted from the queue after a job has processed it.
+If  ajob is NOT processed before the visibility time-out period, the message will become visible again and another reader will process it.
+This can result in the same message being delivered twice.
+
+
 
 # Exam Tricks
 When being asked to **automate the provisioning of resources** think CloudFormation
 When **Infrastructure as Code(IoC)** is mentioned, think CouldFormation
+
 
 
 
