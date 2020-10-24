@@ -498,8 +498,59 @@ loC is the process of managing and provisioning computer data centers through ma
 People pay a monthly subscription and AWS runs a MineCraft server. They choose where they want and what size of the server they want to run. These inputs can be taken by an AWS lambda to create a new Cloudformation stack. Another Lambda can send people the email of their new Minecraft Server IP address and details.
 
 ## Formats
-1. JSON, JSON just came first
+1. JSON, JSON just came first. For some edge cases, JSON has to be used.
 1. YAML, YAML is more concise comparing with JSON by skipping curvy brackets.
+
+NestedStacks help you break up your CloudFormation template into smaller reusable templates that can be composed into large templates
+
+## AWS Quick Starts
+AWS Quick Starts is a great place to learn CloudFormation. It has a collection of pre-built CloudFormation templates. A lot of diagrams can help understand AWS
+
+# CloudWatch
+AWS CloudWatch is a monitoring solution for your AWS resources with a collection of monitoring tools,
+* CloudWatch Logs
+** A log group is a collection of logs. Log files must belong to a log  group. A log in a log group is called log stream. By Default, Logs are kept indefinitely and never expire. Most AWS Services are integrated with CloudWatch Logs. Logging of services sometimes needs to be turned on or requires the IAM Permissions to write the CloudWatch Logs
+* CloudWatch Metrics. Metrics are built on top of logs to represent a time-ordered set of data points. CloudWatch comes with many predefined metrics.
+* CloudWatch Events. Event Source Trigger an event based on a condition or on schedule.
+* CloudWatch Alarms
+* CloudWatch Dashboards
+
+## Custom Metrics and High Resolution Metrics
+Using AWS CLI or SDK you can create and publish yuor own custom metrics.
+High res metrics lets you track under 1 minute down to 1 sec. With High Resolution you can track at,
+* 1 sec
+ * 5 secs
+ * 10 secs
+ * 30 secs
+ * multiple of 60 secs
+ 
+ example to create custom metrics,
+ aws cloudWatch put-metrics-data --metric-name Enterprise-D --namespace Startleet --unit Bytes --value 231434333 --dimensions HullIntegrity=100, Shield=70, Thrusters=maximum
+
+## Cloudwatch Availability of Data
+How often CloudWatch collect and update metrics data for you?
+|  |EC2| Other Services|
+|---|---|---|
+|Basic Monitoring | 5 minutes | 1 minute / 3 Minutes / 5 Minutes |
+| Detailed Monitoring | 1 minute interval |   |
+Most of services are 1 minute by default. 
+
+For EC2, by default, it is 5 minutes, and extra cost needed to turn it into detailed monitoring.
+By Default, some metrics for EC2 instances are not tracked. and CloudWatch agent has to be installed to get extra metrics.
+
+|CloudWatch will track at the Host Level by default| require the Agent to get detailed Metrics|
+|---|---|
+| CPU Usage| Memory utilization|
+| Network usage | Disk Swap utilizaiton |
+| Disk usage | Disk spae utilization|
+| status Checks(Hypervisor Status, EC2 instance status) | Page file utilization, log collection|
+
+
+
+# Exam Tricks
+When being asked to **automate the provisioning of resources** think CloudFormation
+When **Infrastructure as Code(IoC)** is mentioned, think CouldFormation
+
 
 
 
