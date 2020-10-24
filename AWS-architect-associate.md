@@ -9,6 +9,7 @@
 * Signed Cookie
 * Key Management Service multi-tenant HSM
 * CloudHSM single-tenant HSM
+* Multimaster for Dynamo DB
 
 
 # Internet Gateway
@@ -464,3 +465,42 @@ Data Transfer
 
 ## Redshift availability
 Redshift is single-AZ. To run in multi-AZ you whould have to run multiple Redshift Clusters in different AZ with the same inputs. Snapshots can be saved into different AZ.
+
+# DynamoDB
+DynamoDB is a key-value and document database(NoSQL) which can guarantee consistent reads adn writes at any scales.
+Features
+* Fully managed
+* Multiregion
+* Multimaster
+* Durable Database
+* Built-in Security
+* Backup and restore
+* In-Memory caching
+For reads, it provides
+* Eventual Consistent Reads(Default). In this mode, data is returned immediately but data can be inconsistent. Copies of data will be generally consistent in 1 sec.
+* Strongly Consistent Reads. In this mode, data return will wait until data in consistent. Data will never be inconsistent but latency will be higher. Copies of data will be consistent with a guarantee of 1 sec.
+
+Provisoned Capacity can be customized
+All data are stored on SSD storage and spread across 3 different regions.
+
+Terms in DynamoDB
+Row is called _ITEM_
+column is called _attribute_
+Primary Key consists of Partition Key and Sort Key
+
+# AWS CloudFormation
+CloudFormation is a templeting language that defines AWS resources to be provided. Automating the creation of resource via code.
+It is to implement the idea of *Infrastructure as Code* (loC)
+## What is loC
+loC is the process of managing and provisioning computer data centers through machine-readable definition files(like YAML, JSON files) rather than physical hardware configuration or interactive configuration tools(no manual configuration!)
+
+### Use Case with a MineCraft Server
+People pay a monthly subscription and AWS runs a MineCraft server. They choose where they want and what size of the server they want to run. These inputs can be taken by an AWS lambda to create a new Cloudformation stack. Another Lambda can send people the email of their new Minecraft Server IP address and details.
+
+## Formats
+1. JSON, JSON just came first
+1. YAML, YAML is more concise comparing with JSON by skipping curvy brackets.
+
+
+
+
