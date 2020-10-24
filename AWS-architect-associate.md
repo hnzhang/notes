@@ -638,6 +638,11 @@ The message will be deleted from the queue after a job has processed it.
 If  ajob is NOT processed before the visibility time-out period, the message will become visible again and another reader will process it.
 This can result in the same message being delivered twice.
 
+## Short vs Long Polling
+Polling is the method to retrieve messages from the queues
+
+* Short Polling(default) return messages immediately even if the message queue being polled is empty. When a message is needed right away, short polling is what you need
+* Long polling wiats until message arrives in the queue or the long poll timeout expires. Long polling makes it inexpensive to retrieve messages as soon as the messages available. Using long polling will reduce the cost because you can reduce the number of empty receives. **Most of use-cases**, you want to use Long Polling.
 
 
 # Exam Tricks
