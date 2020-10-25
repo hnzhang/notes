@@ -1,5 +1,3 @@
-# Table of Content
-1. [TODO: understand the following Terms](#TODO: understand the following Terms)
 
 # TODO: understand the following Terms,
 * ENI--elastic network interface
@@ -739,6 +737,53 @@ You can get your web-app ready in any supported language(NodeJS, python, GO, etc
  * Smae Origin Prolicies ignore tools like postman or curl
  * CORS is always enforced by the client
  * You can require Authorization to your API via AWS Cognito or a custom Lambda
+
+#Kinesis
+Amazon Kinesis is the AWS fully managed solution for collecting, processing, and analyzing streaming data in the cloud.
+When you need real-time solution for data, think kinesis.
+Streaming Data Example,
+* Stock prices
+* Game Data( as Player plays)
+* Social Network Data
+* Geospatial Data
+* Click Stream Data
+
+4 types of Kinesis Streams available,
+1. Kinesis Data Streams
+   1. Data are sharded. You pay per running shard.
+   1. you can have multiple consumers, and you must manualy configure your consumers. Data is ordered, and each consumer keeps its own position
+   1. Data can be persist from 24 hrs(default) to 168 hours before it disappears from the stream
+   
+1. Kinesis Firehose Delivery Streams
+   1. You choose one consumer from a predefined list.
+   1. Data immediately disappears once it is consumed
+   1. you can convert incoming data to other to a few file formats, compress and secure data
+   1. You pay only for data that is ingested.
+1. Kinesis Video Analytics
+   1. Ingest video and audio encoded data from various devices and or service
+   1. Output video data to ML(like Rekognition, SageMaker) or video processing device
+1. Kinesis Data Analytics
+   1. Input can be Firehose Streams or Data Streams
+   1. to apply data analysis(SQL) and generate an output stream
+   1. this makes real time data analysis possible.
+   
+KPL(Kinesis Producer Library) is a Java library to write data to a stream. You can write data to stream using AWS SDK, but KPL is more efficient
+   
+# AWS Storage Gateway
+It is to extend, backup on-premise storage to the cloud
+Software appliance is available as a virtual machine(VM) Image.
+It supports VMWare ESXi and Microsoft Hyper-V
+Available in 3 types,
+1. File Gateway(as NFS) to store files. A file is also an native S3 object once it is transferred to S3
+1. Volume Gateway(as iSCICI) for block storage in Amazon S3 with point-in-time as Amazon EBS snapshots. HTTPS is used on S3 side as endpoint protocol.
+   1. Stored Volumes. The primary data is on premise, and data is backed up into Amazon S3 snapshots
+   1. Cached Volumes. The primary data is on Amazon S3, and frequently used data are cached on premise to lower the latency.
+  
+1. Tape gateway(as virtual tape library) back up your data to Amazon S3 and archive in Amazon Glacier using your existing tape-based processes
+
+iSCSI-- **Internet Small Computer System Interface** block protocol
+
+
 
 
 # Exam Tricks
