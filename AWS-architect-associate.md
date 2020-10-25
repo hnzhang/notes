@@ -685,7 +685,8 @@ It supports 2 open source caching engine,
 * **Redis** can perform many different operations on data. It is very good for leaderboards, keep track of unread notification data. It is very fast, but arguably not as fast as Memcached. Redis is single threaded.
 
 # High Availability(HA)
-It is the ability for a system to remain available
+It is the ability for a system to remain available. The solution to ensure High Availability
+
 | Many causes could make a service unavailable | Solution to ensure High Availability|
 |---|---|
 | When an AZ becomes unavailable, for example, data-center flooded | run our instances in Multi AZ, and and ELB can route traffic to operational AZs |
@@ -694,8 +695,48 @@ It is the ability for a system to remain available
 | When an instance becomes unavailable e.g. instance failure | use Auto Scaling Groups to ensure minimum amount of instances are running and have ELB route traffic to healty instances |
 | When an web-app gets unresponsive due to distance in geographic location | use CloudFront to cache static content for faster delivery in nearby region. Also instances can be run in nearby regions and route traffic using geolocation policy in Route53 |
 
+# Scale up vs Scale Out
+|Scale up | Scale out|
+|--- |---|
+| Vertical scaling by increasing size of the instance |  horizontal Scaling by adding more instance |
+| Simpler to manage | more complex to manage |
+| Lower availability( if a single instance fails) | Higher Availability| 
 
-The solution to ensure High Availability,
+Generally, you want to scale out and then up to balance complexity and availability
+
+# Elastic Beanstalk
+It is Heroku of AWS. It allows you to quickl;y deploy and manage web-apps on AWS **without worrying about infrastructure**.
+It is not recommended for "Production" applications
+
+Elastic Beanstalk is powered by a CloudFormation template setup for you with,
+* ELB
+* Autoscaling Groups
+* RDS Database
+* EC2 instance preconfigured platforms
+* Monitoring with CloudWatch, SNS
+* In-place and Blue/Green deployment methodologies
+* Security(Rotaes Passwords)
+* it can run Dockerized environment, which apps are packed into dockers and uploaded into ElasticBeansTalk
+
+You can get your web-app ready in any supported language(NodeJS, python, GO, etc), and upload archive zip file to ElasticBeansTalk for deployment. There is version label when the app gets uploaded.
+
+# API Gateway
+* API Gateway is a slolution for creating secure APIs in your cloud environment at any scale.
+* Created APIs act as a front door for applications to access data, business logic, for functionality from back-end services
+* API gameway throttles api endpoints at 10,000 requests per second, and can be increased via service request through AWS account
+* **Stages** allow you to have multiple published versions of your API. eg. prod, dev, qa, staging.
+* Each stage has an invoke url which is the endpoint you use to interact with your API
+* You can use a custom domain for your invoke URL eg. api.exampro.co
+ * the API is be be published via Deploy API. you can choose which Stage you want to publish your API
+ * Resources are your URLs.
+ * Resources can have child resources
+ * You can define multiple methods on your resournces.
+ CORSE issues are common with API Gateway, CORS can be enabled on all or individual endpoints
+ * Caching improves latency and reduces the amount of calls makde to your endpoint
+ * Same Origin Policies helps to prevent XSS attacks
+ * Smae Origin Prolicies ignore tools like postman or curl
+ * CORS is always enforced by the client
+ * You can require Authorization to your API via AWS Cognito or a custom Lambda
 
 
 # Exam Tricks
