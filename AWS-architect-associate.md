@@ -644,6 +644,59 @@ Polling is the method to retrieve messages from the queues
 * Short Polling(default) return messages immediately even if the message queue being polled is empty. When a message is needed right away, short polling is what you need
 * Long polling wiats until message arrives in the queue or the long poll timeout expires. Long polling makes it inexpensive to retrieve messages as soon as the messages available. Using long polling will reduce the cost because you can reduce the number of empty receives. **Most of use-cases**, you want to use Long Polling.
 
+# SNS
+Simple Notification Service is a highly available, durable, secure, fully managed pub/sub messaging service that enable you to decouple microservices, distributed systems, and serverless applications.
+
+## Application Integration!
+* Publishers push events to an **SNS Topic**
+* Subscribers subscribe to SNS Topic to have events pushed to them
+
+## SNS Topic
+Topics allow you to group multiple subscriptions together
+A topic is able to deliver to multiple protocols at once, e.g. email, text message, http/s
+When Topics deliver messages to subscribers, it will automatically format your message according to the subscriber's chosen protocal.
+Topics can be encrypted via KMS
+
+## SNS Subscriptions
+A subscription can only subscribe to one protocol and one topic
+Available Protocols,
+* Email(Good for internal notifications--only support plain text)
+* Http/s--for create webhooks into your web-application
+* Email-JSON --send JSON via email
+* AWS SQS place SNS into SQS queue
+* AWS Lambda
+* SMS send text message
+* Platform Application endpoints Mobile Push
+  * ADM Amazon Device Messaging
+  * APNs Apple Push Notification Service
+  * Baidu Baidu Cloud Push
+  * FCM Firebase Cloud Messaging
+  * MPNS Microsoft Push Notification Service for Windows Phone
+  * WNS Windows Push Notification Services
+ 
+A messages are saved into multi AZs
+
+# ElastiCache
+ElastiCache is in-memory Data Store. The trade off is high volatility(low durability, risk of data loss), but access to data i very fast
+Frequently identical queries are stored in the cache.
+ElastiCache is only accessible to resource operating with the same VPC to ensure low latency.
+It supports 2 open source caching engine,
+* **Memcached** is generally preferred for caching HTML fragments. Memcached is a simple key-value store. It is very fast.
+* **Redis** can perform many different operations on data. It is very good for leaderboards, keep track of unread notification data. It is very fast, but arguably not as fast as Memcached. Redis is single threaded.
+
+# High Availability(HA)
+It is the ability for a system to remain available
+| Many causes could make a service unavailable | Solution to ensure High Availability|
+|---|---|
+| When an AZ becomes unavailable, for example, data-center flooded | run our instances in Multi AZ, and and ELB can route traffic to operational AZs |
+| When a Region become unavailable, eg, meteor strike | run instances in another region. Route53 can be used to route traffic |
+| When an instance of web-app becomes unresponsive, e.g. too much traffic | use Auto Scaling Groups to increase the amount of instances to meet the demand of traffic
+| When an instance becomes unavailable e.g. instance failure | use Auto Scaling Groups to ensure minimum amount of instances are running and have ELB route traffic to healty instances |
+| When an web-app gets unresponsive due to distance in geographic location | use CloudFront to cache static content for faster delivery in nearby region. Also instances can be run in nearby regions and route traffic using geolocation policy in Route53 |
+
+
+The solution to ensure High Availability,
+
 
 # Exam Tricks
 When being asked to **automate the provisioning of resources** think CloudFormation
