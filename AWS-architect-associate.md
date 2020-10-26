@@ -776,10 +776,10 @@ It supports VMWare ESXi and Microsoft Hyper-V
 Available in 3 types,
 1. File Gateway(as NFS) to store files. A file is also an native S3 object once it is transferred to S3
 1. Volume Gateway(as iSCICI) for block storage in Amazon S3 with point-in-time as Amazon EBS snapshots. HTTPS is used on S3 side as endpoint protocol.
-   1. Stored Volumes. The primary data is on premise, and data is backed up into Amazon S3 snapshots
-   1. Cached Volumes. The primary data is on Amazon S3, and frequently used data are cached on premise to lower the latency.
+   1. Stored Volume Gateway. The primary data is on premise, and data is backed up into Amazon S3 snapshots with asyc backup. The size can vary from 1GB to 16 TB in size.
+   1. Cached Volume Gateway. The primary data is on Amazon S3, and frequently used data are cached on premise to lower the latency. Cached volume can be between 1GB to 32GB in size.
   
-1. Tape gateway(as virtual tape library) back up your data to Amazon S3 and archive in Amazon Glacier using your existing tape-based processes
+1. Tape gateway(as virtual tape library) back up your data to Amazon S3 and archive in Amazon Glacier using your existing tape-based processes. Also use ISCSI to transfer data. This is supported by NetBackup, Backup Exec, and Veeam.
 
 iSCSI-- **Internet Small Computer System Interface** block protocol
 
