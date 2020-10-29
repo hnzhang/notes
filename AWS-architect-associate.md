@@ -784,6 +784,76 @@ Available in 3 types,
 iSCSI-- **Internet Small Computer System Interface** block protocol
 
 
+# Preparation Materials
+* Exam Guide, outline recommended knowledge, and white papers. It describes scoring model, and lists domains of exam
+* Sample Questions. It offers 10 questions, and answers
+* Practice Exam. It requires registration. Approx $20. You get immediate pass or failure result. It doesn't reveal incorrect answers
+* White Papers
+ * Architecting for the Cloud: AWS Best Practices
+ * AWS Well-architected Framework
+All these can be found at
+https://aws.amazon.com/certification/certified-solutions-architect-associate/
+
+https://aws.amazon.com/blogs/aws/new-whitepaper-architecting-for-the-cloud-best-practices/
+
+https://aws.amazon.com/architecture/well-architected/
+
+https://aws.amazon.com/training/self-paced-labs/
+## Key Services to Study
+### Reliability
+* Aamzon VPC (virtual private cloud)
+* AWS Direct Connect
+* EC2
+* Route53
+* ELB(Elastic Load balancing)
+* CloudWatch
+* Amazon S3
+* Amazon Glacier
+### Performance
+* Auto Scaling
+* Amazon Elastic Block Store
+* Amazon Elastic File System
+* Amazon VPC
+* Amazon Elastic Container Services(ECS)
+* Amazon CloudWatch
+* Amazon RDS
+* Amazon DynamoDB
+### Security
+* Identity and Access Management(IAM)
+* AWS Security Token Services(STS)
+* IAM Instance Profiles & Roles
+* AWS Organization
+* AWS Config
+* Amazon CloudWatch logs
+* Amazon Elasticsearch Service
+* Amazon VPC Security Groups
+* Amazon Key Management Service(KMS)
+## Cost Optimzization
+* Amazon CloudWatch
+* AWS Trusted Advisor
+* Reserved Instances
+* Spot Instances
+* AWS CloudFormation
+* Cost Explorer
+* Billing Alerts
+### Operational Excellence
+* AWS CloudFormation
+* AWS CodeCommit
+* AWS CodePipeline
+* AWS Lambda
+* AWS Config
+* AWS CouldWatch
+* AWS CouldWatch Logs
+* AWS SNS(Simple Notification Service)
+* Amazon Athena(to query massive logs)
+
+# Test-Taking Strategy
+* in 3 passes
+* 1st pass: choose what you know you know
+* 2nd pass: process of elimination
+* 3rd pass: Review, Review, Review, Review!
+
+
 
 
 # Exam Tricks
