@@ -1,14 +1,14 @@
-the lab from 
+the lab from https://amazon-run.qwiklabs.com/
 Introduction to AWS Identity and Access Management (IAM)
 
+Users, Groups
 A user has a sign in URL
 
-
-# ManagedPolcies
-Managed Polices are pre-built policies either by AWS or by your administrators that can be attached to IAM Users and groups.
+# Policy
 
 Sampel Policy (copied from AmazonEC2ReadOnlyAccess)
 This policy is granting permission to **List** and **Describe** information about EC2, Elastic Load Balancing, CouldWatch, and Auto Scaling.
+Effect, Action, Resource are 3 key statements in the policy.
 ```JSON
 {
   "Version": "2012-10-17",
@@ -40,3 +40,10 @@ This policy is granting permission to **List** and **Describe** information abou
   ]
 }
 ```
+## ManagedPolcies
+Managed Polices are pre-built policies either by AWS or by your administrators that can be attached to IAM Users and groups.
+
+## Inline Policy
+Directly attached to the target. It is not shared with others
+
+## Roles
