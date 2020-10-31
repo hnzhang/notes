@@ -1,5 +1,6 @@
 
 # TODO: understand the following Terms,
+* ARN Amazon Resource Names(ARNs). example, arn:aws:iam::123456789012:user/David
 * ENI--elastic network interface
 * AMI
 * CIDR block
