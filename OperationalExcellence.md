@@ -1041,7 +1041,7 @@ Outputs:
 A Stack is a collection of AWS Resources created from a CloudFormation template
 
 
-#AWS System Manager
+# AWS System Manager
 a collection of features that enable IT Operations
 1. Supported operating system
 2. AWS Systems Manager Agent must be installed
@@ -1069,3 +1069,4 @@ For pactch compliance and configuration inconsistencies.
 Patch Manager uses patch baselines, which include rules for auto-approvng patches within days or their release.
 
 # Dependency Monitoring
+To monitor dependent resource. if dependent resource gets unavailable, take actions(SNS and/or OpsItem)
