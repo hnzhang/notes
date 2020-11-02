@@ -12,6 +12,31 @@
 * CloudHSM single-tenant HSM
 * Multimaster for Dynamo DB
 
+# S3
+Concept of Storage Object(Object-based Storage)
+Cloud based storage solution. It is data storage architecture that manage data as objects, as opposed to other storage archicture:
+* file systems, which manages data as files and file hierarchy, and 
+* block storage, which manages data as blocks within sectors and tracks
+
+S3 provide you with **unlimited storage**, without need to think about underlying infrastructure.
+S3 provides interfaces for you to upload and access your data,
+
+* S3 Object. an S3 Object contains your data. They work like files. An S3 Object may contains the following info,
+  * **Key** this is the name of the object.
+  * **Value** the data itself made up a sequence of bytes
+  * **Version ID** when versining enabled, ther version of object.
+  * **Meta Data** additional information attached to the object. Tags are one type of meta data.
+* S3 Bucket. A S3 Bucket holds S3 Objects. A Bucket can also have folders which in turn hold S3 Objects.
+
+An S3 Object store data from 0 byte to **5 Terabytes** in size.
+S3 is an universal namespace so bucket name must be unique--think it like a domain name.
+
+# S3 Storage classes
+
+
+
+
+
 
 # Internet Gateway
 
