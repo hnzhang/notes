@@ -1,4 +1,4 @@
-#User Data for EC2 instances
+User Data for EC2 instances
 # install Apache web server on Amazon linux
 ```bash
 yum update -y
