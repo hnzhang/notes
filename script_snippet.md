@@ -6,7 +6,7 @@ yum install httpd -y
 service httpd start
 chkconfig httpd on
 ```
-#change password for a user in script
+# change password for a user in script
 ```bash
 echo "<new_password>" | passwd --stdin ec2-user
 ```
