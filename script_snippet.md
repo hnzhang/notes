@@ -16,7 +16,13 @@ echo "<new_password>" | passwd --stdin ec2-user
 
 
 
-#cmds
+# cmds
 
 chown --to change owner 
 chmod change mode of a folder
+
+# Examples
+$  sudo mkdir sampledir  
+$  sudo chown  ec2-user sampledir
+$  sudo chmod -R o+r sampledir
+$  cd sampledir
