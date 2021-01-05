@@ -5,3 +5,5 @@ pip install <package name> --upgrade
 1. install virtualenv first
 2. run the command batch```python -m venv <folder>``` to create a virtual env
 3. to activate the env, run the batch in <folder>\Scripts\activate.bat
+
+# Get DJango and Angular work together
